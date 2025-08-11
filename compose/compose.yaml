@@ -1,0 +1,44 @@
+name: celery-playground
+
+networks:
+  celery-playground:
+
+volumes:
+  redis_data:
+  rabbitmq_data:
+
+services:
+  broker:
+    image: rabbitmq:4-management-alpine
+    ports:
+      - "${RABBITMQ_HOST_PORT}:5672"
+      - "${RABBITMQ_MANAGEMENT_HOST_PORT}:15672"
+    env_file:
+      - broker/broker.env
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - celery-playground
+
+  result-backend:
+    image: redis:8-alpine
+    ports:
+      - "${REDIS_HOST_PORT}:6379"
+    env_file:
+      - result-backend/result-backend.env
+    volumes:
+      - redis_data:/data
+    networks:
+      - celery-playground
+
+  flower:
+    image: mher/flower:latest
+    ports:
+      - "${FLOWER_HOST_PORT}:5555"
+    env_file:
+      - flower/flower.env
+    depends_on:
+      - broker
+      - result-backend
+    networks:
+      - celery-playground
