@@ -93,7 +93,7 @@ lint = [
 
 [package.metadata]
 requires-dist = [
-    { name = "celery", extras = ["rabbitmq", "redis"], specifier = "~=5.5.3" },
+    { name = "celery", extras = ["redis"], specifier = "~=5.5.3" },
     { name = "celery-types", specifier = "==0.23.0" },
     { name = "celery-types", marker = "extra == 'dev'", specifier = "==0.23.0" },
 ]

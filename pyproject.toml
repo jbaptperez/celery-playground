@@ -6,7 +6,7 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "celery-types==0.23.0",
-    "celery[rabbitmq,redis]~=5.5.3",
+    "celery[redis]~=5.5.3",
 ]
 
 [project.optional-dependencies]
