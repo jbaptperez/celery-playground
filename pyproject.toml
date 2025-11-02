@@ -16,11 +16,11 @@ dev = [
 
 [dependency-groups]
 dev = [
-    "black>=25.1.0",
-    "pytest>=8.4.1",
+    "black>=25.9.0",
+    "pytest>=8.4.2",
 ]
 lint = [
-    "ruff>=0.12.8",
+    "ruff>=0.14.3",
 ]
 
 [tool.uv]
